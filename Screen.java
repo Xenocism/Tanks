@@ -2,7 +2,7 @@
   * Creator: Samuel Ferguson
   *
   * 
-  * Dependancies: StdDraw (Princeton Cos126 download package)
+  * Dependancies: StdDraw, Color
   * 
   * 
   * Descrition: Background Screen for GameProject
