@@ -14,11 +14,11 @@ public class Character {
   public String pic;
   
   // Constructor
-  public Character(int x, int y, String pic) {
+  public Character(double x, double y, String pic) {
     xcord = x;
     ycord = y;
     this.pic = pic;
-    rotation = 0.0;
+    rotation = 0.0; // starts with upward orientation
   }
 
   // Returns current rotation value
@@ -29,12 +29,6 @@ public class Character {
   // Changes orientation by imputted degrees
   public void rotate(double degree) {
     rotation += degree;
-  }
-
-  // changes the Characters in game coordinates in orientation direction
-  public void move(double distance) {
-    xcord += distance * Math.cos(Math.toRadians(90 + rotation));
-    ycord += distance * Math.sin(Math.toRadians(90 + rotation));
   }
 
   // Displays Character in StdDraw window

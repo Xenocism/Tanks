@@ -1,7 +1,7 @@
 /******************************************************************************
   * Creator: Samuel Ferguson
   *
-  * Dependancies: StdDraw, Picture
+  * Dependancies: StdDraw, Picture, Character.java
   * 
   * Descrition: Turret Character Extension
   * 
@@ -10,7 +10,7 @@
 public class Turret extends Character {
 
   // Constructor
-  public Turret(int x, int y, String pic) {
+  public Turret(double x, double y, String pic) {
     super(x, y, pic);
   }
 
@@ -18,22 +18,24 @@ public class Turret extends Character {
   public void setdirectionmouse() {
 
     // Finds position of mouse
-    double deltax = StdDraw.mouseX() - xcord;
-    double deltay = StdDraw.mouseY() - ycord;
-    double degree = Math.toDegrees(Math.atan(deltay / deltax));
+    double xpos = StdDraw.mouseX();
+    double ypos = StdDraw.mouseY();
+    double degree = 0.0;
 
-    // Adjusts for limitations of trig in the math library
-    if (deltax > 0 && deltay > 0) degree += -90;
-    if (deltax > 0 && deltay < 0) degree += 270;
-    if (deltax < 0 && deltay < 0) degree += 90;
-    if (deltax < 0 && deltay > 0) degree += 90;
+    // Along axes or at center (to avoid zero value glitches in using Math library)
+    if (xpos == 0.0 || ypos == 0.0) {
+      if (xpos == 0.0 && ypos > 0.0) degree = 0.0;
+      if (xpos == 0.0 && ypos < 0.0) degree = 180.0;
+      if (xpos > 0.0 && ypos == 0.0) degree = -90.0;
+      if (xpos < 0.0 && ypos == 0.0) degree = 90.0;
+      if (xpos == 0.0 && ypos == 0.0) degree = 0.0;
+    } else {
+        degree = Math.toDegrees(Math.atan(ypos / xpos));
+        if (xpos > 0 && ypos > 0) degree += -90;
+        if (xpos > 0 && ypos < 0) degree += 270;
+        if (xpos < 0 && ypos < 0) degree += 90;
+        if (xpos < 0 && ypos > 0) degree += 90;
+      }
     rotation = degree;
-  }
-
-   // Places Turret on top of another character object
-   public void showcompared(Character related) {
-    xcord = related.xcord;
-    ycord = related.ycord;
-    this.show();
   }
 }
