@@ -22,6 +22,17 @@ public class Screen {
     return move * Math.sin(Math.toRadians(90 + rotation)); // zero orientation is upwards
   }
 
+  /*
+  // Restart functionality
+  public static void restart() {
+    try {
+      Runtime.getRuntime().exec("taskkill /f /im cmd.exe");
+    } catch (Exception e) {
+        e.printStackTrace();
+      }
+  }
+  */
+
   // All game screen functions master while loops
   public static void main(String[] args) {
     
