@@ -1,25 +1,25 @@
 /******************************************************************************
   * Creator: Samuel Ferguson
   *
-  * Dependancies: StdDraw, Picture, Character.java
+  * Dependancies: Tankframe.java, Picture, Character.java
   * 
   * Descrition: Turret Character Extension
   * 
   ****************************************************************************/
 
-public class Turret extends Character {
+public class Turret extends Characters {
 
   // Constructor
   public Turret(double x, double y, String pic) {
     super(x, y, pic);
   }
 
-  // Sets the rotation to math that of the mouse position
+  // Sets the rotation to match that of the mouse position
   public void setdirectionmouse() {
 
     // Finds position of mouse
-    double xpos = StdDraw.mouseX();
-    double ypos = StdDraw.mouseY();
+    double xpos = Tankframe.mouseX();
+    double ypos = Tankframe.mouseY();
     double degree = 0.0;
 
     // Along axes or at center (to avoid zero value glitches in using Math library)
